@@ -6,20 +6,10 @@ file_path = os.path.join(dir, "input.txt")
 with open(file_path, 'r') as f:
     banks = [line.rstrip('\n') for line in f]
 
-total = 0
-for bank in banks:
-    max_digit = max(bank[:-1])
-    max_index = bank.index(max_digit)
-    second_max_digit = max(bank[max_index + 1:])
-    total += int(max_digit + second_max_digit)
 
-print(total)
-
-#part 2
-def find_largest_joltage(bank: str) -> int:
+def find_largest_joltage(bank: str, num_batteries: int) -> int:
     result = ''
     start = 0
-    num_batteries = 12
 
     while num_batteries > 0:
         end = len(bank) - num_batteries + 1
@@ -32,7 +22,10 @@ def find_largest_joltage(bank: str) -> int:
     return int(result)
 
 total = 0
+total_p2 = 0
 for bank in banks:
-    total += find_largest_joltage(bank)
-
+    total += find_largest_joltage(bank, 2)
+    total_p2 += find_largest_joltage(bank, 12)
+    
 print(total)
+print(total_p2)
