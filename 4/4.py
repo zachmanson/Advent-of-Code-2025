@@ -66,7 +66,7 @@ for row, col in to_remove:
 total_p2 = len(to_remove)
 
 while to_check:
-    row, col = to_check.popleft()
+    row, col = to_check.pop()
     if can_remove(row, col):
         grid[row][col] = '.'
         total_p2 += 1
